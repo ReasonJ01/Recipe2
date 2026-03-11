@@ -1,0 +1,178 @@
+:root {
+  --bg: #fffdf8;
+  --bg-soft: #fff8ee;
+  --surface: #ffffff;
+  --surface-cream: #fffaf2;
+  --ink: #2f2a25;
+  --muted: #6d655e;
+  --accent: #db6a3d;
+  --accent-soft: #ffe3d6;
+  --line: #ece3d8;
+  --shadow: 0 14px 30px rgba(66, 41, 24, 0.10);
+  --shadow-lift: 0 18px 34px rgba(66, 41, 24, 0.16);
+  font-family: "Inter", "Avenir Next", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 12% -10%, #ffeede 0%, transparent 65%),
+    radial-gradient(1000px 550px at 100% 0%, #eaf6ff 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+}
+
+.gallery-header {
+  text-align: center;
+  padding: 2.4rem 1.2rem 1.2rem;
+}
+
+.kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.gallery-header h1 {
+  margin: 0.2rem 0;
+  font-size: clamp(2rem, 3.8vw, 3.3rem);
+  font-family: "Fraunces", "Georgia", serif;
+  font-weight: 600;
+}
+
+.gallery-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+main { width: min(1120px, 94vw); margin: 0 auto 3rem; }
+
+.landing h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.recipe-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.recipe-tile {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--ink);
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-tile:hover,
+.recipe-tile:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+  border-color: #e3c7b3;
+}
+
+.recipe-tile.active {
+  border-color: var(--accent);
+  box-shadow: 0 16px 32px rgba(219, 106, 61, 0.24);
+}
+
+.tile-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  background: var(--surface-cream);
+}
+
+.tile-copy { padding: 0.85rem 0.95rem 1rem; }
+.recipe-tile .slug { color: var(--muted); font-size: 0.85rem; text-transform: capitalize; }
+.recipe-tile .title {
+  margin-top: 0.35rem;
+  font-size: 1.06rem;
+  font-weight: 600;
+  font-family: "Fraunces", "Georgia", serif;
+}
+
+.recipe-view {
+  margin-top: 1.5rem;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-cream) 100%);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: 1.4rem;
+}
+
+.recipe-view.hidden { display: none; }
+.recipe-view.is-entering { animation: pageIn 440ms cubic-bezier(.16,.84,.32,1) both; transform-origin: top center; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.992); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.recipe-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.recipe-top h2 { font-family: "Fraunces", "Georgia", serif; margin: 0; }
+
+.close-view {
+  border: 1px solid #e8d7c5;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+}
+
+.close-view:hover { background: #fff7ee; }
+
+.recipe-image {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid #eadfce;
+  margin-top: .4rem;
+}
+
+.meta { display: flex; gap: .6rem; flex-wrap: wrap; }
+.meta span {
+  border: 1px solid #f1cdb8;
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  background: var(--accent-soft);
+}
+
+.ingredients { list-style: none; padding: 0; display: grid; gap: .45rem; }
+.ingredients label { display: inline-flex; gap: .45rem; align-items: center; }
+
+.method li { margin-bottom: .75rem; line-height: 1.5; }
+.timer-btn {
+  margin-left: .55rem;
+  border: 1px solid #d16a3f;
+  border-radius: .55rem;
+  padding: .2rem .5rem;
+  background: #de7750;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .recipe-view { padding: 1rem; }
+  .tile-image { height: 145px; }
+}
