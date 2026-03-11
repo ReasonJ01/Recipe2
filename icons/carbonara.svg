@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111827"/>
+  <circle cx="600" cy="315" r="180" fill="#f59e0b"/>
+  <text x="600" y="300" font-size="60" text-anchor="middle" fill="#111827" font-family="sans-serif">Carbonara</text>
+  <text x="600" y="365" font-size="34" text-anchor="middle" fill="#111827" font-family="sans-serif">Recipe Demo Image</text>
+</svg>
